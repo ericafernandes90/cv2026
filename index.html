@@ -125,45 +125,68 @@
   /* IMPACT STAT BAR */
   .stat-bar{
     background:var(--brown-deep);
-    padding:26px 12px;
+    padding:30px 20px;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    max-width:1000px;
+    max-width:1100px;
     margin:0 auto;
   }
   .stat-item{
     flex:1 1 0;
-    min-width:110px;
-    max-width:170px;
-    padding:6px 14px;
-    text-align:center;
+    min-width:160px;
+    max-width:210px;
+    padding:8px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-align:left;
     border-right:1px solid rgba(216,173,109,0.28);
   }
   .stat-item:last-child{border-right:none;}
+  .stat-icon{
+    flex:0 0 auto;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold-bright);
+  }
+  .stat-icon svg{width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .stat-text{display:flex; flex-direction:column;}
   .stat-num{
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size:1.4rem;
+    font-size:1.5rem;
     color:var(--gold-bright);
     display:block;
     white-space:nowrap;
+    line-height:1.2;
   }
   .stat-label{
-    font-size:0.66rem;
-    color:#D9CFC2;
-    letter-spacing:0.02em;
-    margin-top:3px;
+    font-size:0.74rem;
+    color:#EFE6D8;
+    letter-spacing:0.01em;
+    line-height:1.35;
+    margin-top:2px;
+  }
+  @media (max-width:900px){
+    .stat-item{border-right:none;}
   }
   @media (max-width:640px){
+    .stat-bar{flex-direction:column; align-items:stretch; padding:8px 22px; max-width:420px;}
     .stat-item{
-      flex:1 1 42%;
       max-width:none;
-      padding:8px 10px;
+      width:100%;
+      padding:16px 2px;
       border-right:none;
-      border-bottom:1px solid rgba(216,173,109,0.2);
+      border-bottom:1px solid rgba(216,173,109,0.22);
     }
-    .stat-item:nth-last-child(-n+2){border-bottom:none;}
+    .stat-item:last-child{border-bottom:none;}
+    .stat-num{font-size:1.6rem;}
+    .stat-label{font-size:0.8rem;}
   }
 
   /* SPECIALTIES TICKER */
@@ -207,53 +230,10 @@
     white-space:nowrap;
   }
 
-  /* LOGO MARQUEE — tools */
-  .marquee{
-    overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  }
-  .marquee-track{
-    display:flex;
-    gap:12px;
-    width:max-content;
-    animation:scroll-x 36s linear infinite;
-  }
-  .marquee:hover .marquee-track{animation-play-state:paused;}
   @keyframes scroll-x{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
   }
-  .logo-chip{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    flex:0 0 auto;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:10px 16px;
-    white-space:nowrap;
-  }
-  .logo-chip img{
-    height:20px; width:auto;
-    max-width:56px;
-    object-fit:contain;
-  }
-  .logo-chip{transition:transform .2s ease, box-shadow .2s ease;}
-  .logo-chip:hover{transform:translateY(-2px); box-shadow:0 6px 14px rgba(59,36,23,0.1);}
-  .logo-chip .logo-badge{
-    height:20px; width:20px;
-    flex:0 0 auto;
-    border-radius:50%;
-    border:1.5px solid var(--gold);
-    color:var(--gold);
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:0.6rem;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .logo-chip span{font-size:0.82rem; font-weight:500; color:var(--brown-deep);}
 
   /* LANGUAGE SLIDER */
   .lang-marquee{
@@ -282,7 +262,7 @@
   .lang-item .l-level{font-size:0.72rem; color:var(--gold); font-weight:600; letter-spacing:0.02em;}
 
   @media (prefers-reduced-motion: reduce){
-    .marquee-track, .lang-track, .ticker-track{animation:none;}
+    .lang-track, .ticker-track{animation:none;}
   }
 
   /* BODY */
@@ -503,11 +483,26 @@
   </div>
 
   <div class="stat-bar">
-    <div class="stat-item"><span class="stat-num">-€3,930/mo</span><span class="stat-label">SEA spend cut, leads held at 165</span></div>
-    <div class="stat-item"><span class="stat-num">+66.7%</span><span class="stat-label">conversions from one A/B test</span></div>
-    <div class="stat-item"><span class="stat-num">-36.2%</span><span class="stat-label">CPA on that same test</span></div>
-    <div class="stat-item"><span class="stat-num">142K</span><span class="stat-label">contacts enriched, outbound/ABM</span></div>
-    <div class="stat-item"><span class="stat-num">6+</span><span class="stat-label">years in B2B marketing</span></div>
+    <div class="stat-item">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></span>
+      <span class="stat-text"><span class="stat-num">-€3,930/mo</span><span class="stat-label">SEA spend cut, leads held at 165</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+      <span class="stat-text"><span class="stat-num">+66.7%</span><span class="stat-label">conversions from one A/B test</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+      <span class="stat-text"><span class="stat-num">-36.2%</span><span class="stat-label">CPA on that same test</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="stat-text"><span class="stat-num">142K</span><span class="stat-label">contacts enriched, outbound/ABM</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>
+      <span class="stat-text"><span class="stat-num">6+</span><span class="stat-label">years in B2B marketing</span></span>
+    </div>
   </div>
 
   <div class="ticker-wrap">
@@ -631,27 +626,16 @@
     </section>
 
     <section style="margin-bottom:0;">
-      <div class="eyebrow">Tools</div>
-      <div class="marquee">
-        <div class="marquee-track" id="toolsTrack">
-          <div class="logo-chip"><img src="assets/logos/googleanalytics.svg" alt="" loading="lazy"><span>Google Analytics</span></div>
-          <div class="logo-chip"><img src="assets/logos/googleads.svg" alt="" loading="lazy"><span>Google Ads</span></div>
-          <div class="logo-chip"><img src="assets/logos/linkedin.svg" alt="" loading="lazy"><span>LinkedIn Ads</span></div>
-          <div class="logo-chip"><img src="assets/logos/hubspot.svg" alt="" loading="lazy"><span>HubSpot</span></div>
-          <div class="logo-chip"><img src="assets/logos/zapier.svg" alt="" loading="lazy"><span>Zapier</span></div>
-          <div class="logo-chip"><img src="assets/logos/semrush.svg" alt="" loading="lazy"><span>SemRush</span></div>
-          <div class="logo-chip"><img src="assets/logos/googlesearchconsole.svg" alt="" loading="lazy"><span>Search Console</span></div>
-          <div class="logo-chip"><span class="logo-badge">C</span><span>Clarity</span></div>
-          <div class="logo-chip"><span class="logo-badge">L</span><span>Lemlist</span></div>
-          <div class="logo-chip"><img src="assets/logos/clay.webp" alt="" loading="lazy"><span>Clay</span></div>
-          <div class="logo-chip"><img src="assets/logos/dealfront.png" alt="" loading="lazy"><span>Dealfront</span></div>
-          <div class="logo-chip"><img src="assets/logos/linkedin.svg" alt="" loading="lazy"><span>Sales Navigator</span></div>
-          <div class="logo-chip"><img src="assets/logos/notion.svg" alt="" loading="lazy"><span>Notion</span></div>
-          <div class="logo-chip"><img src="assets/logos/wordpress.svg" alt="" loading="lazy"><span>WordPress</span></div>
-          <div class="logo-chip"><img src="assets/logos/livestorm.png" alt="" loading="lazy"><span>Livestorm</span></div>
-          <div class="logo-chip"><img src="assets/logos/openai.svg" alt="" loading="lazy"><span>ChatGPT</span></div>
-          <div class="logo-chip"><img src="assets/logos/anthropic.svg" alt="" loading="lazy"><span>Claude Code</span></div>
-          <div class="logo-chip"><img src="assets/logos/googlegemini.svg" alt="" loading="lazy"><span>Gemini</span></div>
+      <div class="ticker-wrap" style="padding:0;">
+        <div class="ticker-strip">
+          <div class="ticker-track">
+            <span class="tick-label">AI &amp; Marketing Automation</span><span class="tick-sep">✦</span>
+            <span class="tick-label">Paid Media &amp; Performance</span><span class="tick-sep">✦</span>
+            <span class="tick-label">Data &amp; Reporting</span><span class="tick-sep">✦</span>
+            <span class="tick-label">Digital Marketing (SEO/SEA)</span><span class="tick-sep">✦</span>
+            <span class="tick-label">Stakeholder Management</span><span class="tick-sep">✦</span>
+            <span class="tick-label">Mentoring &amp; Training</span><span class="tick-sep">✦</span>
+          </div>
         </div>
       </div>
     </section>
@@ -664,7 +648,7 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // duplicate marquee content once, so the CSS loop (translateX -50%) is seamless
-  document.querySelectorAll('.marquee-track, .lang-track, .ticker-track').forEach(function(track){
+  document.querySelectorAll('.lang-track, .ticker-track').forEach(function(track){
     track.insertAdjacentHTML('beforeend', track.innerHTML);
   });
 
