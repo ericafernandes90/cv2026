@@ -293,37 +293,23 @@
     max-width:640px;
     color:var(--text);
   }
-  .profile-art{flex:0 0 auto; width:110px;}
-  .profile-art svg{width:100%; height:auto; display:block; overflow:visible;}
-  .profile-art ellipse{
-    fill:none;
-    stroke:var(--gold);
-    stroke-width:1.4;
-    stroke-linecap:round;
-    stroke-dasharray:260;
-    animation:draw-line 9s ease-in-out infinite;
+  .profile-art{flex:0 0 auto; width:150px;}
+  .profile-art img{
+    width:100%;
+    height:auto;
+    display:block;
+    animation:char-bob 5s ease-in-out infinite;
   }
-  .profile-art .draw-b{animation-delay:-3s; stroke:var(--gold-bright);}
-  .profile-art .draw-c{animation-delay:-6s; stroke:var(--brown);}
-  .profile-art .orbit-dot{fill:var(--gold-bright); animation:pulse-dot 9s ease-in-out infinite;}
-  @keyframes draw-line{
-    0%{stroke-dashoffset:260; opacity:1;}
-    45%{stroke-dashoffset:0; opacity:1;}
-    75%{stroke-dashoffset:0; opacity:1;}
-    90%{stroke-dashoffset:0; opacity:0;}
-    100%{stroke-dashoffset:260; opacity:0;}
-  }
-  @keyframes pulse-dot{
-    0%, 100%{r:3; opacity:0.7;}
-    50%{r:5; opacity:1;}
+  @keyframes char-bob{
+    0%, 100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
   }
   @media (max-width:680px){
     .profile-block{flex-direction:column-reverse; gap:18px;}
-    .profile-art{width:96px; align-self:center;}
+    .profile-art{width:150px; align-self:center;}
   }
   @media (prefers-reduced-motion: reduce){
-    .profile-art ellipse{animation:none; stroke-dashoffset:0; opacity:1;}
-    .profile-art .orbit-dot{animation:none;}
+    .profile-art img{animation:none;}
   }
 
   section{margin-bottom:44px;}
@@ -548,12 +534,7 @@
         <p>B2B digital marketer with 6+ years owning marketing programs end to end. Led the transition of paid media and automation from agency-managed to fully in-house, building the HubSpot workflows and KPI dashboards a marketing team scales on. Now focused on piloting AI-powered marketing tools and driving adoption. Fluent in English and French, working proficiency in Dutch.</p>
       </div>
       <div class="profile-art" aria-hidden="true">
-        <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-          <circle class="orbit-dot" cx="70" cy="70" r="4"/>
-          <ellipse class="draw-a" cx="70" cy="70" rx="58" ry="23"/>
-          <ellipse class="draw-b" cx="70" cy="70" rx="58" ry="23" transform="rotate(60 70 70)"/>
-          <ellipse class="draw-c" cx="70" cy="70" rx="58" ry="23" transform="rotate(120 70 70)"/>
-        </svg>
+        <img src="assets/img/erica-character.png" alt="">
       </div>
     </div>
 
