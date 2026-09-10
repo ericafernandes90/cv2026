@@ -36,9 +36,6 @@
   }
   .hello-badge{
     display:inline-block;
-    border:1px solid var(--gold);
-    border-radius:999px;
-    padding:8px 26px;
     font-family:'Fraunces', serif;
     font-style:italic;
     font-size:1.05rem;
@@ -434,9 +431,22 @@
     opacity:0.3;
     animation:float-drift 14s ease-in-out infinite;
   }
+  .float-bg img:nth-child(even){
+    animation-name:float-drift-rev;
+  }
   @keyframes float-drift{
-    0%, 100%{transform:translateY(0) rotate(0deg);}
-    50%{transform:translateY(-22px) rotate(6deg);}
+    0%{transform:translate(0,0) rotate(0deg);}
+    25%{transform:translate(55px,-20px) rotate(5deg);}
+    50%{transform:translate(100px,4px) rotate(-4deg);}
+    75%{transform:translate(50px,22px) rotate(4deg);}
+    100%{transform:translate(0,0) rotate(0deg);}
+  }
+  @keyframes float-drift-rev{
+    0%{transform:translate(0,0) rotate(0deg);}
+    25%{transform:translate(-55px,18px) rotate(-5deg);}
+    50%{transform:translate(-100px,-4px) rotate(4deg);}
+    75%{transform:translate(-50px,-20px) rotate(-4deg);}
+    100%{transform:translate(0,0) rotate(0deg);}
   }
   @media (max-width:900px){
     .float-bg{z-index:5;}
