@@ -177,9 +177,6 @@
   }
   .ticker-strip{
     background:var(--black);
-    transform:rotate(-1.6deg);
-    width:112%;
-    margin-left:-6%;
     padding:14px 0;
   }
   .ticker-track{
@@ -442,7 +439,9 @@
     50%{transform:translateY(-22px) rotate(6deg);}
   }
   @media (max-width:900px){
-    .float-bg{display:none;}
+    .float-bg{z-index:5;}
+    .float-bg img{height:24px; opacity:0.1;}
+    .float-bg img:nth-child(even){display:none;}
   }
   @media (prefers-reduced-motion: reduce){
     .float-bg img{animation:none;}
